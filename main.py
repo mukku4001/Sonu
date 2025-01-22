@@ -3,25 +3,25 @@ import speech_recognition as sr
 import random
 import webbrowser
 import datetime
-# Initialize the text-to-speech engine
+
 engine = pyttsx3.init()
-voices = engine.getProperty('voices')  # Get list of available voices
+voices = engine.getProperty('voices') 
 
-# Use a valid index for voice
-if len(voices) > 1:  # Check if there are at least 2 voices available
-    engine.setProperty('voice', voices[1].id)  # Use the second voice
+
+if len(voices) > 1: 
+    engine.setProperty('voice', voices[1].id)  
 else:
-    engine.setProperty('voice', voices[0].id)  # Use the first voice as fallback
+    engine.setProperty('voice', voices[0].id) 
 
-engine.setProperty('rate', 150)  # Set the speech rate
+engine.setProperty('rate', 150)  
 
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
 def command():
-    content = ""  # Initialize content as an empty string
-    while content == "":  # Corrected condition
+    content = ""  
+    while content == "":  
         r = sr.Recognizer()
         with sr.Microphone() as source:
             print("Say something!")
